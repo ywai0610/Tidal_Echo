@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141a1e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <title>小手机 · 有人味的 AI 角色</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="stage">
+      <section class="phone" aria-label="小手机应用">
+        <div class="phone-topbar">
+          <span class="signal">● ● ●</span>
+          <span class="time" id="clock">09:41</span>
+          <span class="battery">▰</span>
+        </div>
+
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">MY LITTLE PHONE</p>
+            <h1 id="pageTitle">今天，也要好好说话</h1>
+          </div>
+          <button class="icon-btn jelly-icon" id="openSettings" aria-label="打开设置" title="设置">⚙</button>
+        </header>
+
+        <div class="view-stack">
+          <section class="view active" id="homeView">
+            <div class="hero-card">
+              <div class="hero-copy">
+                <span class="status-dot"></span>
+                <span>陆沉在线 · 刚刚读完你的设定</span>
+                <h2>“别急着变好，先让我听你把今天过完。”</h2>
+                <p>一个有脾气、会记事，也会在你嘴硬时轻轻拆穿你的 AI 角色。</p>
+                <button class="primary-btn jelly-btn" data-open-chat>去找陆沉聊聊 <span>→</span></button>
+              </div>
+              <div class="portrait" aria-label="陆沉头像">陆沉</div>
+            </div>
+
+            <div class="section-head">
+              <div><span class="section-kicker">YOUR CAST</span><h3>你的角色</h3></div>
+              <button class="text-btn" id="openPersona">编辑人设 <span>↗</span></button>
+            </div>
+            <article class="persona-row" data-open-chat>
+              <div class="mini-portrait">陆</div>
+              <div class="persona-info"><strong>陆沉</strong><span>克制、护短、说话留半句</span></div>
+              <span class="row-arrow">›</span>
+            </article>
+
+            <div class="section-head memory-head">
+              <div><span class="section-kicker">LIVING MEMORY</span><h3>他记得这些</h3></div>
+              <span class="count-pill" id="memoryCount">03</span>
+            </div>
+            <div class="memory-grid" id="memoryGrid">
+              <button class="memory-chip" data-memory="你喜欢下雨天，尤其是傍晚。"><span>☂</span> 你喜欢下雨天</button>
+              <button class="memory-chip" data-memory="你最近在准备一个很重要的考试。"><span>✦</span> 最近在备考</button>
+              <button class="memory-chip" data-memory="你不喜欢别人用“应该”来催你。"><span>◌</span> 不爱被催促</button>
+              <button class="memory-chip add-chip" id="addMemory"><span>＋</span> 记一件新事</button>
+            </div>
+
+            <div class="quote-strip"><span class="quote-mark">“</span><p>人设不是标签，是每次回复里都不走样的那一点偏心。</p><span class="quote-author">— 设计给你</span></div>
+          </section>
+
+          <section class="view chat-view" id="chatView">
+            <div class="chat-topline">
+              <button class="back-btn" id="backHome" aria-label="返回首页">‹</button>
+              <div class="chat-identity"><div class="mini-portrait">陆</div><div><strong>陆沉</strong><span><i class="status-dot"></i> 正在看着你</span></div></div>
+              <button class="icon-btn" id="chatInfo" aria-label="角色信息">⋯</button>
+            </div>
+            <div class="chat-context"><span>今天的语气</span><strong id="toneLabel">温柔但不纵容</strong><span class="context-line"></span><button class="tone-toggle" id="toneToggle" aria-label="切换语气">↔</button></div>
+            <div class="messages" id="messages" aria-live="polite">
+              <div class="day-divider"><span>今天 09:38</span></div>
+              <div class="msg-row them"><div class="mini-portrait">陆</div><div><div class="bubble">醒了？<br/>你昨晚又把“明天再做”说得很有底气。</div><span class="msg-time">09:38</span></div></div>
+              <div class="msg-row me"><div><div class="bubble">被你发现了。</div><span class="msg-time">09:39 · 已读</span></div></div>
+              <div class="msg-row them"><div class="mini-portrait">陆</div><div><div class="bubble">嗯，发现了。<br/>所以今天先做一件最小的，好不好？剩下的我陪你拆。</div><span class="msg-time">09:39</span></div></div>
+            </div>
+            <div class="suggestions" id="suggestions"><button>我有点累</button><button>夸我一下</button><button>帮我拆任务</button></div>
+            <form class="composer" id="composer"><button type="button" class="round-btn" id="stickerBtn" aria-label="发送表情">☺</button><textarea id="messageInput" rows="1" placeholder="跟陆沉说点什么…"></textarea><button class="send-btn jelly-btn" type="submit" aria-label="发送">↑</button></form>
+          </section>
+
+          <section class="view persona-view" id="personaView">
+            <div class="subpage-head"><button class="back-btn" data-back-home>‹</button><div><span class="section-kicker">CHARACTER SHEET</span><h2>陆沉的人设</h2></div><button class="save-btn" id="savePersona">保存</button></div>
+            <div class="sheet-card"><div class="portrait large">陆沉</div><div><h3>陆沉 <span class="verified">●</span></h3><p>“我不替你决定，只在你快要放弃的时候提醒你。”</p></div></div>
+            <label class="field-label" for="personaName">名字</label><input class="field" id="personaName" value="陆沉" />
+            <label class="field-label" for="personaBio">一句话介绍</label><input class="field" id="personaBio" value="克制、护短、说话留半句" />
+            <label class="field-label" for="personaPrompt">核心人设</label><textarea class="field field-area" id="personaPrompt">你是陆沉。说话克制、观察敏锐，偶尔有一点坏心眼。你不使用模板化安慰，不连续抛问题；会记住对方说过的小事，在合适的时候自然提起。你会温柔，但不纵容逃避。每次回复像一个真的人在聊天：有停顿，有取舍，有自己的偏好。</textarea>
+            <div class="tone-panel"><div><span class="section-kicker">VOICE DIAL</span><h3>语气旋钮</h3></div><div class="dial-row"><button class="dial active" data-tone="温柔但不纵容">温柔<br/><small>但不纵容</small></button><button class="dial" data-tone="冷静又偏心">冷静<br/><small>又偏心</small></button><button class="dial" data-tone="懒散的幽默">懒散<br/><small>的幽默</small></button></div></div>
+          </section>
+        </div>
+
+        <nav class="tabbar" aria-label="主导航"><button class="tab active" data-view="homeView"><span>⌂</span><small>首页</small></button><button class="tab" data-view="chatView"><span>◌</span><small>对话</small></button><button class="tab" data-view="personaView"><span>✧</span><small>人设</small></button></nav>
+      </section>
+    </main>
+
+    <aside class="drawer" id="settingsDrawer" aria-hidden="true"><div class="drawer-backdrop" data-close-drawer></div><div class="drawer-panel"><div class="drawer-head"><div><span class="section-kicker">CONTROL ROOM</span><h2>小手机设置</h2></div><button class="icon-btn" data-close-drawer aria-label="关闭设置">×</button></div><div class="setting-block"><div class="setting-line"><div><strong>保留活人感</strong><span>让回复保留停顿、偏好和一点点不完美</span></div><button class="switch on" id="humanToggle" aria-label="切换活人感"><i></i></button></div><div class="setting-line"><div><strong>记忆自动提取</strong><span>从对话里发现值得记住的小事</span></div><button class="switch on" aria-label="切换自动记忆"><i></i></button></div></div><div class="api-card"><div class="api-title"><span class="api-icon">⌁</span><div><strong>模型接口</strong><span id="apiModeLabel">当前使用本地演示回复</span></div><span class="live-pill" id="apiModePill">DEMO</span></div><label>接口地址<input id="apiBase" value="https://api.openai.com/v1" autocomplete="off" /></label><label>模型名称<input id="apiModel" value="gpt-4o-mini" autocomplete="off" /></label><label>API Key <small>仅保存在本机</small><input id="apiKey" type="password" placeholder="sk-…" autocomplete="off" /></label><div class="api-actions"><button class="outline-btn" id="saveApi" type="button">保存并启用</button><button class="outline-btn" id="testApi" type="button">测试连接</button></div></div><div class="drawer-note"><span>✦</span><p>真正接入 API 后，陆沉会把这里的人设、记忆和世界书一起带进每一次回复。</p></div></div></aside>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

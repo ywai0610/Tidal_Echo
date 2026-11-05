@@ -1,0 +1,20 @@
+{
+  "name": "小手机 · 有人味的 AI 角色",
+  "short_name": "小手机",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#141a1e",
+  "background_color": "#141a1e",
+  "description": "一个可以放进手机主屏的 AI 角色聊天前端。",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
